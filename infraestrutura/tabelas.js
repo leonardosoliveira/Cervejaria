@@ -37,7 +37,8 @@ class Tabelas {
    
    
     criarAtendimentos(){
-        const sql = 'CREATE TABLE IF NOT EXISTS Atendimentos (id int PRIMARY KEY AUTO_INCREMENT, cliente_id int NOT NULL, produto varchar(20),servico varchar(20) NOT NULL, status varchar(20) NOT NULL,observacao varchar(50), pagamento_id int NOT NULL , CONSTRAINT fk_clienAten FOREIGN KEY (cliente_id) REFERENCES Clientes (cliente_id), CONSTRAINT fk_clienAten FOREIGN KEY (cliente_id) REFERENCES Clientes (cliente_id) '
+        const sql = 'CREATE TABLE IF NOT EXISTS Atendimentos (id int PRIMARY KEY AUTO_INCREMENT, cliente_id int NOT NULL,' +
+            'produto varchar(20),servico varchar(20) NOT NULL, status varchar(20) NOT NULL,observacao varchar(50), pagamento_id int NOT NULL , CONSTRAINT fk_clienAten FOREIGN KEY (cliente_id) REFERENCES Clientes (cliente_id), CONSTRAINT fk_clienAten FOREIGN KEY (cliente_id) REFERENCES Clientes (cliente_id) '
 
         this.conexao.query(sql, (erro) => {
             if(erro){
