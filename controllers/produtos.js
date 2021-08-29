@@ -1,4 +1,4 @@
-const Produtos = require('..//models/produtos')
+const Produtos = require('../models/produtos')
 
 
 module.exports = app => {
