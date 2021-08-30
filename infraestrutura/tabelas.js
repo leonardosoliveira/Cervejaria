@@ -9,19 +9,24 @@ class Tabelas {
     }
 
     criarClientes() {
-        const sql = 'CREATE TABLE IF NOT EXISTS Clientes (cliente_id int NOT NULL AUTO_INCREMENT, ' +
-            'cliente varchar(50) NOT NULL,' +
-            ' numero varchar(20),' +
-            'endereco varchar(50) NOT NULL,' +
-            ' PRIMARY KEY(cliente_id))'
+        try {
+            const sql = 'CREATE TABLE IF NOT EXISTS Clientes (cliente_id int NOT NULL AUTO_INCREMENT, ' +
+                'cliente varchar(50) NOT NULL,' +
+                ' numero varchar(20),' +
+                'endereco varchar(50) NOT NULL,' +
+                ' PRIMARY KEY(cliente_id))'
 
-        this.conexao.query(sql, (erro) => {
-            if (erro) {
-                console.log(erro)
-            } else {
-                console.log('Tabela Clientes criada com sucesso')
-            }
-        })
+            this.conexao.query(sql, (erro) => {
+                if (erro) {
+                    console.log(erro)
+                } else {
+                    console.log('Tabela Clientes criada com sucesso')
+                }
+            })
+        }
+        catch (e){
+            console.log(e, 'erro criarclientes')
+        }
     }
 
 
