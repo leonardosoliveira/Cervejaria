@@ -17,11 +17,10 @@ class Atendimento {
     }
 
     async select(atendimento) {
-        // const sql = 'SELECT * FROM ListaPedidos INNER JOIN Atendimentos on Atendimentos.atendimento_id = ListaPedidos.num_pedido ' +
-        //     'INNER JOIN Produtos on Produtos.produtos_id = ListaPedidos.num_produto ' +
-        //     'INNER JOIN Clientes on Clientes.cliente_id = Atendimentos.cliente_id WHERE Atendimentos. ? '
-        //
-        const sql = "SELECT * FROM Atendimentos"
+        const sql = 'SELECT * FROM ListaPedidos INNER JOIN Atendimentos on Atendimentos.atendimento_id = ListaPedidos.num_pedido ' +
+            'INNER JOIN Produtos on Produtos.produtos_id = ListaPedidos.num_produto ' +
+            'INNER JOIN Clientes on Clientes.cliente_id = Atendimentos.cliente_id WHERE Atendimentos. ? '
+
         return await query(sql, atendimento)
     }
 }
