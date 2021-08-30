@@ -17,10 +17,13 @@ class Atendimento {
     }
 
     async select(atendimento) {
-        const sql = 'SELECT * FROM ListaPedidos INNER JOIN Atendimentos on Atendimentos.atendimento_id = ListaPedidos.num_pedido ' +
-            'INNER JOIN Produtos on Produtos.produtos_id = ListaPedidos.num_produto ' +
-            'INNER JOIN Clientes on Clientes.cliente_id = Atendimentos.cliente_id WHERE Atendimentos. ? '
-
+        let sql;
+        if (Object.keys(atendimento).length > 0) {
+            sql = 'SELECT * FROM Atendimentos WHERE ? '
+        }
+        else{
+            sql = 'SELECT * FROM Atendimentos'
+        }
         return await query(sql, atendimento)
     }
 }

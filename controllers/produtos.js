@@ -2,9 +2,16 @@ const Produtos = require('../models/produtos')
 
 
 module.exports = app => {
-    app.get('/produtos', (req,res) => res.send('Rota de Produtos cervejaria com GET'))
+    app.get('/produtos', async (req, res) => {
+        const atendimento = req.query
 
-    app.post('/produtos', (req,res) => {
+        let response = await Produtos.select(atendimento)
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Content-Type", "application/json");
+        res.send(response)
+    })
+
+    app.post('/produtos', (req, res) => {
         const produto = req.body
 
         Produtos.adiciona(produto)
