@@ -3,7 +3,7 @@ const Tabelas = require('./infraestrutura/tabelas')
 const conexao = require("./infraestrutura/conexao");
 
 async function handle() {
-    conn = await conexao()
+    conn = await new conexao()
     conn.connect(erro => {
         if (erro) {
             console.log(erro, 'connection error')
