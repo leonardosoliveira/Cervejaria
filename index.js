@@ -4,7 +4,6 @@ const conexao = require("./infraestrutura/conexao");
 
 async function handle() {
     conn = await conexao()
-    console.log(conn, 'conn')
     conn.connect(erro => {
         if (erro) {
             console.log(erro, 'connection error')

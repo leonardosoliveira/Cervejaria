@@ -1,11 +1,11 @@
 const conexao = require('../infraestrutura/conexao')
-
+const conn = conexao()
 
 class Cliente{
     adiciona(cliente){
         const sql = 'INSERT INTO Clientes SET ?'
 
-        conexao.query(sql, cliente, (erro, resultados) => {
+        conn.query(sql, cliente, (erro, resultados) => {
             if(erro){
                 console.log(erro)
             }else{
