@@ -16,14 +16,21 @@ class Cliente{
     }
 
     async select(atendimento) {
-        let sql;
-        if (Object.keys(atendimento).length > 0) {
-            sql = 'SELECT * FROM Clientes WHERE ? '
+        try {
+
+
+            let sql;
+            if (Object.keys(atendimento).length > 0) {
+                sql = 'SELECT * FROM Clientes WHERE ? '
+            } else {
+                sql = 'SELECT * FROM Clientes'
+            }
+            return await query(sql, atendimento)
         }
-        else{
-            sql = 'SELECT * FROM Clientes'
+        catch (e){
+            console.log(e, 'select Clientes')
+            return {}
         }
-        return await query(sql, atendimento)
     }
 
 }
