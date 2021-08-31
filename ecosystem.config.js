@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
         script: 'index.js',
-        instances: "max",
+        instances: "10",
         watch: '.'
     }],
 
