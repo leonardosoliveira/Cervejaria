@@ -1,18 +1,18 @@
 const customExpress = require('./config/customExpress')
 const Tabelas = require('./infraestrutura/tabelas')
 const conexao = require("./infraestrutura/conexao");
+const conn = conexao()
 
-
-conection.connect(erro => {
+conn.connect(erro => {
     if (erro) {
         console.log(erro, 'connection error')
     } else {
         console.log('conectado com sucesso')
-        Tabelas.init(conexao)
+        Tabelas.init(conn)
 
     }
 
-    conection.on('error', function (err) {
+    conn.on('error', function (err) {
         console.log('db error', err);
         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
         } else {

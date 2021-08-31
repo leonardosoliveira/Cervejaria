@@ -1,12 +1,13 @@
 const conexao = require('../infraestrutura/conexao')
 const util = require('util');
-const query = util.promisify(conexao.query).bind(conexao);
+const conn = conexao()
+const query = util.promisify(conn.query).bind(conn);
 
 class Pagamento {
     adiciona(pagamento){
         const sql = 'INSERT INTO Pagamento SET ?'
 
-        conexao.query(sql, pagamento, (erro, resultados) => {
+        conn.query(sql, pagamento, (erro, resultados) => {
             if(erro){
                 console.log(erro)
             }else{
