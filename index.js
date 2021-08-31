@@ -3,21 +3,18 @@ const Tabelas = require('./infraestrutura/tabelas')
 const conexao = require("./infraestrutura/conexao");
 
 async function handle() {
-    conn = await new conexao()
-    conn.connect(erro => {
+    conection.connect(erro => {
         if (erro) {
             console.log(erro, 'connection error')
-            setTimeout(handle, 2000);
         } else {
             console.log('conectado com sucesso')
-            Tabelas.init(conn)
+            Tabelas.init(conexao)
 
         }
 
-        conn.on('error', function (err) {
+        conection.on('error', function (err) {
             console.log('db error', err);
             if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-                setTimeout(handle, 2000);
             } else {
                 throw err;
             }
