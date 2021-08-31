@@ -3,12 +3,18 @@ const Lista = require('../models/listaPedidos')
 
 module.exports = app => {
     app.get('/listaPedidos', async (req, res) => {
-        const atendimento = req.query
+        try {
+            const atendimento = req.query
 
-        let response = await Lista.select(atendimento)
-        res.setHeader("Access-Control-Allow-Origin", "*");
-        res.setHeader("Content-Type", "application/json");
-        res.send(response)
+            let response = await Lista.select(atendimento)
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Content-Type", "application/json");
+            res.send(response)
+        }
+        catch (e){
+            console.log(e, 'error get lista pedidos')
+            res.send({'content': 'error'})
+        }
     })
 
     app.post('/listaPedidos', (req,res) => {
