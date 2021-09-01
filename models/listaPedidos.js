@@ -32,7 +32,10 @@ class Pedidos {
             }
 
             let qr = await query(sql, atendimento)
-
+            if(qr.length === 0){
+                sql = 'SELECT * FROM Clientes WHERE ?'
+                qr = await query(sql, atendimento)
+            }
 
             let obj = {}
             let obj_produtos = {}
@@ -64,7 +67,9 @@ class Pedidos {
 
                 }
             } else {
+                console.log(qr, 'obj')
                 obj = qr[0]
+                console.log(obj, 'obj')
             }
             return obj
         }
